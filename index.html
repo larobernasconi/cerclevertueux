@@ -6,23 +6,90 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
     <link rel="icon" href="./assets/style/favicon.png">
     <link rel="stylesheet" href="./assets/style/stylesheet.css">
+    <link rel="stylesheet" href="./assets/style/circle.css">
+    <link rel="stylesheet" href="./assets/style/overlay.css">
     <title>cercle vertueux</title>
 </head>
 
 <body>
-    <script src="./assets/script/sketch.js"></script>
-    <div class="des">
-        <h1> cercle vertueux </h1>
+    <div class="desc">
+        <h1>cercle vertueux</h1>
         <p>
             A digital archive housing a collection of 100 untranslatable words from diverse languages across the globe. <br>
             Each word encapsulates profound meanings, cultural nuances, and emotions that defy direct translation into other languages. <br>
             Through this repository, users explore the richness and depth of human expression, unveiling the intricate tapestry of linguistic diversity. <br>
         </p>
     </div>
-    <div class="menu">
-        <p> sort by <a href="word list.html">languages</a></p>
+    <div class="info">
+        <p> lara bernasconi <br>
+            supsi - mendrisio <br>
+        </p>
+        <p>
+            archvio xs <br>
+            interaction design <br>
+        </p>
+        <p>
+            cv 428.01 <br>
+            Andreas Gysin <br>
+            Giovanni Profeta <br>
+        </p>
+    </div>
+    <main></main>
+    
+    <div id="overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-btn" onclick="closeOverlay()">&times;</span>
+            <h2 id="word"></h2>
+            <p id="language"></p>
+            <p id="meaning"></p>
+        </div>
+    </div>
+    
+    <script>
+        async function run() {
+            let data;
 
-    </div>   
+            // Carichiamo il file locale "words.json"
+            await fetch("./assets/data/words.json")
+                .then(function(r) { return r.json(); })
+                .then(json => {
+                    // Il contenuto del file words.json, una volta caricato
+                    // viene assegnato alla nostra variabile "data"
+                    data = json;
+                });
+
+            let output = '';
+            const total = data.length;
+            const viewportSize = Math.min(window.innerWidth, window.innerHeight); // Utilizza la dimensione minore tra larghezza e altezza del viewport come base per il raggio
+            const radius = viewportSize * 0.35; // Regola il fattore di scala per determinare la dimensione del cerchio
+
+            for (let i = 0; i < total; i++) {
+                const angle = (i / total) * 2 * Math.PI;
+                const x = window.innerWidth / 2 + radius * Math.cos(angle);
+                const y = window.innerHeight / 2 + radius * Math.sin(angle);
+                const rotation = angle * (180 / Math.PI); // Calcola l'angolo di rotazione in gradi
+                const lastLetter = data[i].word.charAt(data[i].word.length - 1);
+                output += `<a href="javascript:void(0);" onclick="openOverlay('${data[i].word}', '${data[i].language}', '${data[i].meaning}')" style="position: absolute; left: ${x}px; top: ${y}px; transform: translate(-50%, -50%) rotate(${rotation}deg);">${data[i].word}</a>`;
+            }
+
+            document.querySelector('main').innerHTML = output;
+        }
+
+        function openOverlay(word, language, meaning) {
+            document.getElementById('word').innerText = word;
+            document.getElementById('language').innerText = language;
+            document.getElementById('meaning').innerText = meaning;
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        run();
+
+        // Esegui nuovamente la funzione run() ogni volta che la finestra viene ridimensionata
+        window.addEventListener('resize', run);
+    </script>
 </body>
 </html>
-
