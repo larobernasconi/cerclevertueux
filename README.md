@@ -1,54 +1,20 @@
+# Cercle Vertueux
+**Autore: Lara Bernasconi**  
 SUPSI 2023-234  
 Corso d’interaction design, CV427.01  
 Docenti: A. Gysin, G. Profeta  
 
-Elaborato 1: Archivio Digitale XS 
-
-# Cercle Vertueux
-Autore: Lara Bernasconi  
-
-
 ## Introduzione e tema
-Cercle Vertueux è un archivio digitale che da spazio una collezione di 100 parole intraducibili provenienti da 41 lingue diverse in tutto il mondo mostrando sfumature culturali ed emozioni che non possono essere tradotte direttamente.  Attraverso questo archivio, gli utenti sono invitati a esplorare la ricchezza e la profondità dell'espressione umana, scoprendo la complessità della diversità linguistica celebrando il legame tra lingua, cultura ed esperienza umana.
+Cercle Vertueux è un archivio digitale che ospita una collezione di 100 parole intraducibili provenienti da 41 lingue diverse in tutto il mondo. Queste parole catturano significati profondi, sfumature culturali ed emozioni che non possono essere tradotte direttamente in altre lingue. Attraverso questo archivio, invito gli utenti a esplorare la ricchezza e la profondità dell'espressione umana, scoprendo la complessità della diversità linguistica e celebrando il legame tra lingua, cultura ed esperienza umana.
 
 ## Riferimenti progettuali
-txt
+Il principale riferimento progettuale di Cercle Vertueux è il concetto di archivio digitale interattivo. Mi sono ispirata ad altre piattaforme che valorizzano la diversità linguistica e culturale, come il progetto "The Dictionary of Obscure Sorrows", che raccoglie parole inventate per descrivere emozioni complesse. Ho voluto creare un'esperienza utente coinvolgente che permetta di scoprire parole intraducibili in un modo visivamente attraente e interattivo.
 
-
-## Design dell’interfraccia e modalià di interazione
-a
-
-[hello](http://google.ch)
-
+## Design dell’interfaccia e modalità di interazione
+L'interfaccia di Cercle Vertueux è progettata per essere intuitiva e coinvolgente. Al centro della schermata, le parole sono disposte lungo un cerchio immaginario, che ruota in base all'interazione dell'utente con un cursore. Gli utenti possono utilizzare un cursore a scorrimento per ruotare il cerchio e visualizzare le parole disposte lungo di esso. Cliccando su una parola, si apre una finestra pop-up che fornisce ulteriori dettagli sulla parola scelta, inclusa la lingua di origine e il significato.
 
 ## Tecnologia usata
-Nunc consequat interdum varius sit amet mattis vulputate. Vehicula ipsum a arcu cursus vitae congue. Odio ut sem nulla pharetra. Accumsan lacus vel facilisis volutpat est velit egestas dui id. Quisque egestas diam in arcu cursus. Eget nulla facilisi etiam dignissim diam. Aenean sed adipiscing diam donec adipiscing tristique. Porttitor massa id neque aliquam. Sem viverra aliquet eget sit amet tellus cras. Scelerisque eu ultrices vitae auctor eu augue ut lectus. Nunc aliquet bibendum enim facilisis gravida neque convallis a. Lacus sed turpis tincidunt id aliquet risus feugiat.
-
-
-```JavaScript
-const image = new Image();
-image.onload = () => {
-	gl.bindTexture(gl.TEXTURE_2D, texture);
-	gl.texImage2D(
-		gl.TEXTURE_2D,
-		level,
-		internalFormat,
-		srcFormat,
-		srcType,
-		image
-	);
-	if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
-		gl.generateMipmap(gl.TEXTURE_2D);
-	} else {
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-	}
-};
-image.src = url;
-```
+Per sviluppare Cercle Vertueux, ho utilizzato diverse tecnologie. La struttura HTML definisce la struttura base della pagina web, mentre CSS è utilizzato per lo stile e la presentazione visiva. Il cuore dell'interattività è gestito tramite JavaScript, con l'uso della libreria p5.js per facilitare la visualizzazione delle parole disposte in cerchio e la loro rotazione. L'uso di fetch API permette di caricare i dati delle parole da un file JSON esterno, rendendo l'archivio facilmente aggiornabile e manutenibile.
 
 ## Target e contesto d’uso
-Sed enim ut sem viverra aliquet eget sit. Iaculis at erat pellentesque adipiscing commodo. Et pharetra pharetra massa massa ultricies mi quis hendrerit dolor. At tempor commodo ullamcorper a lacus vestibulum sed arcu. Ipsum faucibus vitae aliquet nec ullamcorper sit. Tempus quam pellentesque nec nam aliquam sem et tortor. Turpis egestas sed tempus urna et pharetra pharetra massa. Ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel.
-
-[<img src="doc/munari.jpg" width="300" alt="Supplemento al dizionario italiano">]()
+Cercle Vertueux è rivolto a chiunque sia interessato alla linguistica, alla cultura e all'esplorazione delle diverse forme di espressione umana. Questo include studenti, ricercatori, appassionati di lingue e chiunque sia curioso di scoprire nuovi concetti ed emozioni che non trovano un equivalente diretto in altre lingue. Il contesto d'uso principale è un ambiente educativo o culturale, dove gli utenti possono interagire con l'archivio digitale sia per scopi di apprendimento che di esplorazione personale.

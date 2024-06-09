@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
-    <link rel="icon" href="./assets/style/favicon.png">
     <link rel="stylesheet" href="./assets/style/stylesheet.css">
     <link rel="stylesheet" href="./assets/style/circle.css">
     <link rel="stylesheet" href="./assets/style/overlay.css">
@@ -34,6 +33,10 @@
             Giovanni Profeta <br>
         </p>
     </div>
+    <div class="slider-container">
+        <input type="range" id="rotationSlider" min="0" max="360" value="0">
+        <div class="arrow"></div> <!-- Freccia che indica la parola da leggere -->
+    </div>
     <main></main>
     
     <div id="overlay" class="overlay">
@@ -46,30 +49,34 @@
     </div>
     
     <script>
-        async function run() {
-            let data;
+        let data;
+        let rotationAngle = 0;
 
-            // Carichiamo il file locale "words.json"
+        async function fetchData() {
             await fetch("./assets/data/words.json")
-                .then(function(r) { return r.json(); })
+                .then(r => r.json())
                 .then(json => {
-                    // Il contenuto del file words.json, una volta caricato
-                    // viene assegnato alla nostra variabile "data"
                     data = json;
                 });
+            renderWords();
+        }
 
+        function renderWords() {
             let output = '';
             const total = data.length;
-            const viewportSize = Math.min(window.innerWidth, window.innerHeight); // Utilizza la dimensione minore tra larghezza e altezza del viewport come base per il raggio
-            const radius = viewportSize * 0.35; // Regola il fattore di scala per determinare la dimensione del cerchio
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const radius = Math.min(window.innerWidth, window.innerHeight) * 0.40;
+            const angleIncrement = (2 * Math.PI) / total;
 
             for (let i = 0; i < total; i++) {
-                const angle = (i / total) * 2 * Math.PI;
-                const x = window.innerWidth / 2 + radius * Math.cos(angle);
-                const y = window.innerHeight / 2 + radius * Math.sin(angle);
-                const rotation = angle * (180 / Math.PI); // Calcola l'angolo di rotazione in gradi
-                const lastLetter = data[i].word.charAt(data[i].word.length - 1);
-                output += `<a href="javascript:void(0);" onclick="openOverlay('${data[i].word}', '${data[i].language}', '${data[i].meaning}')" style="position: absolute; left: ${x}px; top: ${y}px; transform: translate(-50%, -50%) rotate(${rotation}deg);">${data[i].word}</a>`;
+                let angle = i * angleIncrement + rotationAngle;
+                let x = centerX + radius * Math.cos(angle);
+                let y = centerY + radius * Math.sin(angle);
+
+                output += `<a href="javascript:void(0);" onclick="openOverlay('${data[i].word}', '${data[i].language}', '${data[i].meaning}')" 
+                style="position: absolute; left: ${x}px; top: ${y}px; transform: translate(-50%, -50%) rotate(${angle}rad);"
+                class="rotated-text">${data[i].word}</a>`;
             }
 
             document.querySelector('main').innerHTML = output;
@@ -86,10 +93,13 @@
             document.getElementById('overlay').style.display = 'none';
         }
 
-        run();
+        document.getElementById('rotationSlider').addEventListener('input', function(event) {
+            rotationAngle = (event.target.value * Math.PI) / 180;
+            renderWords();
+        });
 
-        // Esegui nuovamente la funzione run() ogni volta che la finestra viene ridimensionata
-        window.addEventListener('resize', run);
+        fetchData();
+        window.addEventListener('resize', renderWords);
     </script>
 </body>
 </html>
