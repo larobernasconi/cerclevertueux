@@ -35,7 +35,6 @@
     </div>
     <div class="slider-container">
         <input type="range" id="rotationSlider" min="0" max="360" value="0">
-        <div class="arrow"></div> <!-- Freccia che indica la parola da leggere -->
     </div>
     <main></main>
     
@@ -66,7 +65,7 @@
             const total = data.length;
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
-            const radius = Math.min(window.innerWidth, window.innerHeight) * 0.40;
+            const radius = Math.min(window.innerWidth, window.innerHeight) * 0.35;
             const angleIncrement = (2 * Math.PI) / total;
 
             for (let i = 0; i < total; i++) {

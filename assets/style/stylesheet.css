@@ -57,3 +57,19 @@ a{
     font-size: 15;
     text-decoration: none;
 }
+
+.slider-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: 200px; /* Altezza del cursore */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(270deg); /* Ruota il contenitore */
+    transform-origin: center;
+}
+
+input[type="range"] {
+    width: 200px; /* Larghezza del cursore che diventa l'altezza per il cursore verticale */
+}
