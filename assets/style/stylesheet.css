@@ -47,29 +47,34 @@ p{
     color: black;
     margin: 1%;
     font-style: normal;
-    font-size: 1em;
+    font-size: small;
 }
 
 
 a{
     color: black;
-    margin: 2%;
+    margin: 1%;
     font-size: 15;
     text-decoration: none;
 }
 
 .slider-container {
-    position: fixed;
+    position: absolute;
     bottom: 20px;
-    right: 20px;
+    right: 1%;
     height: 200px; /* Altezza del cursore */
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(270deg); /* Ruota il contenitore */
+    transform: rotate(360deg); /* Ruota il contenitore */
     transform-origin: center;
 }
 
 input[type="range"] {
     width: 200px; /* Larghezza del cursore che diventa l'altezza per il cursore verticale */
+}
+
+.data{
+    font-size: small;
+    color: gray;
 }

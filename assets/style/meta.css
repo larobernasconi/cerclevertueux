@@ -1,0 +1,50 @@
+@import url('https://fonts.cdnfonts.com/css/akzidenzgrotesk');
+
+body {
+    background-color: whitesmoke;
+    font-family: 'AkzidenzGrotesk', sans-serif;
+    margin: 1%;
+}
+
+a{
+    font-size: small;
+    margin: 1%;
+    color: gray;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.item {
+    margin-bottom: 20px;
+    font-size: small;
+    display: flex;
+}
+
+.category-column {
+    margin-right: 10px;
+    text-align: left;
+}
+
+.category-column div {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.content-column {
+    flex: 1;
+    text-align: left;
+}
+
+.content-column div {
+    margin-bottom: 10px;
+}
+
