@@ -31,9 +31,7 @@ La funzione entra in un ciclo `for` che itera su ciascuna parola nell'array `dat
 
 La stringa HTML per ogni parola è costruita e aggiunta a `output`. Ogni parola è avvolta in un elemento `<a>` con uno stile CSS inline che posiziona l'elemento assolutamente alle coordinate calcolate. La funzione `openOverlay` è associata all'evento `onclick` di ciascun elemento `<a>`, passando i dettagli della parola come parametri per visualizzarli in un overlay. La trasformazione CSS `translate(-50%, -50%)` centra esattamente l'elemento rispetto alle coordinate calcolate, e `rotate(${angle}rad)` ruota il testo in modo che sia orientato correttamente lungo il cerchio.
 
-Dopo il ciclo, il contenuto HTML accumulato in `output` viene inserito nell'elemento `<main>` della pagina usando `innerHTML`. Questo aggiorna dinamicamente la pagina con la nuova disposizione delle parole ogni volta che la funzione viene chiamata. La funzione `renderWords` è progettata per essere chiamata sia durante il caricamento iniziale dei dati che ogni volta che la finestra del browser viene ridimensionata o l'angolo di rotazione viene modificato tramite un controllo dell'utente, garantendo
-
- una visualizzazione interattiva e reattiva delle parole.
+Dopo il ciclo, il contenuto HTML accumulato in `output` viene inserito nell'elemento `<main>` della pagina usando `innerHTML`. Questo aggiorna dinamicamente la pagina con la nuova disposizione delle parole ogni volta che la funzione viene chiamata. La funzione `renderWords` è progettata per essere chiamata sia durante il caricamento iniziale dei dati che ogni volta che la finestra del browser viene ridimensionata o l'angolo di rotazione viene modificato tramite un controllo dell'utente, garantendo una visualizzazione interattiva e reattiva delle parole.
 
 ```javascript
 function renderWords() {
