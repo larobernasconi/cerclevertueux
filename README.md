@@ -1,4 +1,6 @@
 # Cercle Vertueux
+[versione live](https://larobernasconi.github.io/cerclevertueux/)
+
 **Autore: Lara Bernasconi**  
 SUPSI 2023-234  
 Corso d’interaction design, CV427.01  
